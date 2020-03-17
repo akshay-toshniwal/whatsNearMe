@@ -11,12 +11,12 @@ function acceptForm()
    var cnt = document.getElementById('inputContact').value;
 
    
-      /*alert(nm);
+      alert(nm);
       alert(pss);
       alert(eml);
       alert(add);
       alert(cnt);
-   */
+   
    var ar = new Array(nm,pss,eml,add,cnt);
    var obj = { 
         name :nm,
@@ -29,7 +29,7 @@ function acceptForm()
             
         alert(sendInfo);
 
-         $.ajax({
+        $.ajax({
            type: "POST",
            url: "http://localhost:8080/register",
             contentType: "application/json;charset=utf-8",
@@ -41,6 +41,21 @@ function acceptForm()
            data: sendInfo
        });
          alert("done");
+
+            
+
+         /*$.ajax({  
+            url: 'http://localhost:8080/navigator',  
+            type: 'GET',  
+            dataType: 'json',  
+            success: function(data, textStatus, xhr) {  
+                console.log(data);  
+                alert("hell0");
+            },  
+            error: function(xhr, textStatus, errorThrown) {  
+                console.log('Error in Database');  
+            }  
+        });  */
 };
 
 
