@@ -14,7 +14,6 @@ import com.raisoni.model.Register;
 import com.raisoni.service.NavigatorService;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:8081")
 public class NavigatorController {
 
    @Autowired
@@ -32,10 +31,10 @@ public class NavigatorController {
 	}
 	
 	@PostMapping("/register")
-	void addEmployee(@RequestBody Register rg) {
+	String  addEmployee(@RequestBody Register rg) {
 		ns.register(rg);
    
-   
+		return("Hello  ");
   
 	}
 }

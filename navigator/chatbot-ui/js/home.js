@@ -9,13 +9,6 @@ function acceptForm()
    var eml = document.getElementById('inputEmail4').value;
    var add = document.getElementById('inputAddress').value;
    var cnt = document.getElementById('inputContact').value;
-
-   
-      alert(nm);
-      alert(pss);
-      alert(eml);
-      alert(add);
-      alert(cnt);
    
    var ar = new Array(nm,pss,eml,add,cnt);
    var obj = { 
@@ -27,42 +20,24 @@ function acceptForm()
 
         var sendInfo = JSON.stringify(obj);
             
-        alert(sendInfo);
+        console.log(sendInfo);
 
         $.ajax({
            type: "POST",
            url: "http://localhost:8080/register",
             contentType: "application/json;charset=utf-8",
-           dataType: "json",
-           success: function () {
-                   alert("Somebody" + nm+ " was added in list !");
-               },
+           dataType: "text",
+           success: function(data) {  
+                alert(data + nm +" Successfully Registered");  
+            },  
+            error: function() {  
+                alert('Error in Database');  
+            }  ,
 
            data: sendInfo
        });
-         alert("done");
-
-            
-
-         /*$.ajax({  
-            url: 'http://localhost:8080/navigator',  
-            type: 'GET',  
-            dataType: 'json',  
-            success: function(data, textStatus, xhr) {  
-                console.log(data);  
-                alert("hell0");
-            },  
-            error: function(xhr, textStatus, errorThrown) {  
-                console.log('Error in Database');  
-            }  
-        });  */
+         
 };
-
-
-
-
-
-  
 
 
 $(document).ready(function() {
