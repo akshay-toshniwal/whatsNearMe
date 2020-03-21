@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.raisoni.model.Login;
 import com.raisoni.model.Navigator;
 import com.raisoni.model.Register;
 import com.raisoni.service.NavigatorService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class NavigatorController {
 
    @Autowired
@@ -31,10 +33,19 @@ public class NavigatorController {
 	}
 	
 	@PostMapping("/register")
-	String  addEmployee(@RequestBody Register rg) {
+	String  addUser(@RequestBody Register rg) {
 		ns.register(rg);
    
 		return("Hello  ");
   
+	}
+	
+	@PostMapping("/navigator/login")
+	int chkLogin(@RequestBody Login lg) {
+		
+		
+		int id =  ns.loginUser(lg);
+		return id;
+		  
 	}
 }

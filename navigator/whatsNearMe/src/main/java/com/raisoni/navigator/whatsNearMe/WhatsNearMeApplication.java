@@ -17,13 +17,5 @@ public class WhatsNearMeApplication {
 		SpringApplication.run(WhatsNearMeApplication.class, args);
 	}
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/register").allowedOrigins("http://localhost:8081");
-			}
-		};
-	}
+	
 }

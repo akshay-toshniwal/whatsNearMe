@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+
+import com.raisoni.model.Login;
 import com.raisoni.model.Navigator;
 import com.raisoni.model.Register;
 
@@ -20,8 +22,6 @@ public interface NavigatorDao {
 	@Insert("insert into register ( name ,  emailid ,contact , pass , addrs  )values ( #{name} , #{emailid}, #{contact}, #{pass}, #{addrs})")
 	void registerUser(Register rg);
 	
-
-	
-	
-
+	@Select("select id  from register where  emailid = #{emailid} and pass =#{pass}  ")
+   	String  loginUser(Login lg);
 }
