@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 @ComponentScan("com.raisoni")
 @MapperScan("com.raisoni.dao")
+
 public class WhatsNearMeApplication {
 
 	public static void main(String[] args) {

@@ -1,7 +1,11 @@
 function loadRegister(){
     $("#content").load("html/register.html");
 }
+function loadLogin()
+{
+    $("#content").load("html/login.html");
 
+}
 function acceptForm()
 {
    var nm = document.getElementById('inputName').value;
@@ -122,10 +126,19 @@ $(document).ready(function() {
              loadRegister();
      });
 
+    
     $("#register").click(function(){
 
 
                     validate();
+
+
+
+    });
+    $("#navLogin").click(function(){
+
+
+                  loadLogin();
 
 
 

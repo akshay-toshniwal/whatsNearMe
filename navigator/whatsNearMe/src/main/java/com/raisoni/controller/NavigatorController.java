@@ -1,12 +1,16 @@
 package com.raisoni.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.raisoni.model.Login;
@@ -47,5 +51,22 @@ public class NavigatorController {
 		int id =  ns.loginUser(lg);
 		return id;
 		  
+	}
+	
+	@PostMapping("/sessionUser")
+	public String sessionUser(@RequestBody String msg, HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		String messages = (String) request.getSession().getAttribute("Logged_in_Usrs");
+		if (messages == null) {
+			request.getSession().setAttribute("Logged_in_Usrs", msg);
+		}
+		request.getSession().setAttribute("Logged_in_Usrs", msg);
+		return "redirect:/navigator";
+	}
+	
+	@PostMapping("/logout")
+	public String destroySession(HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "redirect:/navigator/login";
 	}
 }
